@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S-100 Standards Documentation</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #1a73e8;
+      --primary-dark: #1558b0;
+      --sidebar-width: 260px;
+      --navbar-height: 56px;
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: #f8f9fa;
+    }
+
+    /* ── Navbar ── */
+    .td-navbar {
+      background: var(--primary);
+      height: var(--navbar-height);
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    }
+    .navbar-brand__name {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .nav-link-lang {
+      color: rgba(255,255,255,.85) !important;
+      font-weight: 500;
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 4px;
+      padding: 3px 10px !important;
+      transition: background .15s;
+    }
+    .nav-link-lang:hover {
+      background: rgba(255,255,255,.15);
+      color: #fff !important;
+    }
+
+    /* ── Layout ── */
+    .td-outer {
+      display: flex;
+      min-height: calc(100vh - var(--navbar-height));
+    }
+
+    /* ── Sidebar ── */
+    .td-sidebar {
+      width: var(--sidebar-width);
+      min-width: var(--sidebar-width);
+      background: #fff;
+      border-right: 1px solid #dee2e6;
+      padding: 1.5rem 0;
+      position: sticky;
+      top: var(--navbar-height);
+      height: calc(100vh - var(--navbar-height));
+      overflow-y: auto;
+    }
+    .td-sidebar-nav a {
+      display: block;
+      padding: .35rem 1.25rem;
+      color: #495057;
+      text-decoration: none;
+      font-size: .9rem;
+      border-left: 3px solid transparent;
+      transition: all .12s;
+    }
+    .td-sidebar-nav a:hover {
+      color: var(--primary);
+      background: #f0f4ff;
+      border-left-color: var(--primary);
+    }
+    .td-sidebar-nav a.active {
+      color: var(--primary);
+      font-weight: 600;
+      border-left-color: var(--primary);
+      background: #e8f0fe;
+    }
+    .sidebar-section-title {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #6c757d;
+      padding: 1rem 1.25rem .3rem;
+    }
+
+    /* ── Main ── */
+    .td-main {
+      flex: 1;
+      padding: 2.5rem 3rem;
+      max-width: 900px;
+    }
+
+    /* ── Hero banner ── */
+    .pageinfo-primary {
+      background: #e8f0fe;
+      border-left: 4px solid var(--primary);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.75rem;
+      color: #1a1a1a;
+    }
+
+    /* ── Standard cards ── */
+    .standard-card {
+      background: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      transition: box-shadow .15s, border-color .15s;
+    }
+    .standard-card:hover {
+      box-shadow: 0 4px 16px rgba(26,115,232,.12);
+      border-color: var(--primary);
+    }
+    .standard-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: .4rem;
+      color: var(--primary);
+    }
+    .standard-card .badge-std {
+      background: #e8f0fe;
+      color: var(--primary-dark);
+      font-size: .72rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-right: 6px;
+    }
+    .standard-card p {
+      font-size: .9rem;
+      color: #555;
+      margin-bottom: .6rem;
+    }
+    .placeholder-notice {
+      font-size: .8rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    /* ── Section index grid ── */
+    .section-index {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .section-index .entry {
+      background: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      padding: 1rem;
+    }
+    .section-index .entry h5 a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: .95rem;
+    }
+
+    /* ── Footer ── */
+    .td-footer {
+      background: #343a40;
+      color: rgba(255,255,255,.7);
+      padding: 1.25rem 2rem;
+      font-size: .82rem;
+    }
+    .td-footer a { color: rgba(255,255,255,.6); }
+
+    @media (max-width: 767px) {
+      .td-sidebar { display: none; }
+      .td-main { padding: 1.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav class="td-navbar navbar navbar-expand-md">
+  <div class="container-fluid px-3">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="45" stroke="#fff" stroke-width="6"/>
+        <path d="M25 65 Q50 20 75 65" stroke="#fff" stroke-width="5" fill="none"/>
+        <circle cx="50" cy="38" r="6" fill="#fff"/>
+      </svg>
+      <span class="navbar-brand__name">S-100 Standards</span>
+    </a>
+    <div class="ms-auto d-flex align-items-center gap-3">
+      <span style="color:rgba(255,255,255,.6);font-size:.85rem;">🌐</span>
+      <a class="nav-link-lang" href="index.html"><strong>EN</strong></a>
+      <a class="nav-link-lang" href="index_ko.html">한국어</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ BODY ══════════ -->
+<div class="td-outer">
+
+  <!-- ── Sidebar ── -->
+  <aside class="td-sidebar d-none d-md-block">
+    <nav class="td-sidebar-nav">
+      <div class="sidebar-section-title">Documentation</div>
+      <a href="index.html" class="active">Overview</a>
+
+      <div class="sidebar-section-title">Standards</div>
+      <a href="#s-102">S-102 — Bathymetric Surface</a>
+      <a href="#s-124">S-124 — Navigational Warnings</a>
+      <a href="#s-201">S-201 — Aids to Navigation</a>
+      <a href="#s-158">S-158 — Ports &amp; Waterways</a>
+      <a href="#s-158-100">S-158(100) — Ports (S-100 based)</a>
+      <a href="#s-158-98">S-158·98 — Ports (S-98 based)</a>
+    </nav>
+  </aside>
+
+  <!-- ── Main content ── -->
+  <main class="td-main">
+
+    <nav aria-label="breadcrumb" class="mb-3">
+      <ol class="breadcrumb" style="font-size:.85rem;">
+        <li class="breadcrumb-item active" aria-current="page">Documentation</li>
+      </ol>
+    </nav>
+
+    <h1 class="mb-3">S-100 Standards Documentation</h1>
+
+    <div class="pageinfo-primary">
+      <p class="mb-0">Welcome to the S-100 Standards documentation portal — a reference hub for IHO Universal Hydrographic Data Model–based product specifications.</p>
+    </div>
+
+    <p>
+      The <strong>S-100</strong> framework, published by the International Hydrographic Organization (IHO), is the
+      universal hydrographic data model that underpins a new generation of digital maritime standards.
+      This portal documents a curated set of S-100–family product specifications used in modern
+      Electronic Navigational Chart (ENC) systems, port management, and maritime safety services.
+    </p>
+
+    <p>
+      Each standard below defines feature catalogues, portrayal catalogues, and GML schemas that
+      enable interoperable exchange of geospatial maritime data between ships, port authorities,
+      and maritime safety agencies.
+    </p>
+
+    <hr class="my-4" />
+
+    <!-- S-102 -->
+    <div class="standard-card" id="s-102">
+      <span class="badge-std">S-102</span>
+      <h3>Bathymetric Surface</h3>
+      <p>
+        S-102 specifies the content model and encoding for bathymetric surface data, providing
+        high-resolution depth information to complement ENC data. It supports grid-based depth
+        models used by voyage planning systems and autonomous vessel navigation.
+      </p>
+      <p class="placeholder-notice"><i class="fa-solid fa-circle-info me-1"></i>Detailed content, schema references, and examples will be added soon.</p>
+    </div>
+
+    <!-- S-124 -->
+    <div class="standard-card" id="s-124">
+      <span class="badge-std">S-124</span>
+      <h3>Navigational Warnings</h3>
+      <p>
+        S-124 defines the data model for encoding and disseminating navigational warnings,
+        replacing legacy NAVTEX and radio-based warning systems with structured, georeferenced
+        digital messages. It enables vessels to receive and display warnings directly on ECDIS.
+      </p>
+      <p class="placeholder-notice"><i class="fa-solid fa-circle-info me-1"></i>Detailed content, schema references, and examples will be added soon.</p>
+    </div>
+
+    <!-- S-201 -->
+    <div class="standard-card" id="s-201">
+      <span class="badge-std">S-201</span>
+      <h3>Aids to Navigation (AtoN)</h3>
+      <p>
+        S-201 provides a standardised data model for Aids to Navigation information — buoys,
+        beacons, lights, and fog signals — enabling seamless exchange between AtoN authorities,
+        vessel traffic services, and onboard navigation systems.
+      </p>
+      <p class="placeholder-notice"><i class="fa-solid fa-circle-info me-1"></i>Detailed content, schema references, and examples will be added soon.</p>
+    </div>
+
+    <!-- S-158 -->
+    <div class="standard-card" id="s-158">
+      <span class="badge-std">S-158</span>
+      <h3>Ports and Waterways</h3>
+      <p>
+        S-158 covers the product specification for ports and inland waterways data, including
+        berth geometry, fairway limits, and operational constraints. It bridges hydrographic
+        charting and port management workflows.
+      </p>
+      <p class="placeholder-notice"><i class="fa-solid fa-circle-info me-1"></i>Detailed content, schema references, and examples will be added soon.</p>
+    </div>
+
+    <!-- S-158(100) -->
+    <div class="standard-card" id="s-158-100">
+      <span class="badge-std">S-158(100)</span>
+      <h3>Ports and Waterways — S-100 Edition</h3>
+      <p>
+        S-158(100) is the S-100–compliant edition of the ports and waterways product specification,
+        conforming to the IHO S-100 data model and leveraging GML-based feature catalogues for
+        full interoperability with modern ECDIS platforms.
+      </p>
+      <p class="placeholder-notice"><i class="fa-solid fa-circle-info me-1"></i>Detailed content, schema references, and examples will be added soon.</p>
+    </div>
+
+    <!-- S-158·98 -->
+    <div class="standard-card" id="s-158-98">
+      <span class="badge-std">S-158·98</span>
+      <h3>Ports and Waterways — S-98 Edition</h3>
+      <p>
+        S-158·98 is the S-98–based variant of the ports and waterways specification, targeting
+        systems that implement the earlier IHO encoding framework. It provides a migration path
+        and compatibility layer for legacy port management installations.
+      </p>
+      <p class="placeholder-notice"><i class="fa-solid fa-circle-info me-1"></i>Detailed content, schema references, and examples will be added soon.</p>
+    </div>
+
+    <hr class="my-4" />
+
+    <h2 class="h5 mb-3">Quick Navigation</h2>
+    <div class="section-index">
+      <div class="entry"><h5><a href="#s-102">S-102</a></h5><p style="font-size:.82rem;color:#666;">Bathymetric Surface</p></div>
+      <div class="entry"><h5><a href="#s-124">S-124</a></h5><p style="font-size:.82rem;color:#666;">Navigational Warnings</p></div>
+      <div class="entry"><h5><a href="#s-201">S-201</a></h5><p style="font-size:.82rem;color:#666;">Aids to Navigation</p></div>
+      <div class="entry"><h5><a href="#s-158">S-158</a></h5><p style="font-size:.82rem;color:#666;">Ports &amp; Waterways</p></div>
+      <div class="entry"><h5><a href="#s-158-100">S-158(100)</a></h5><p style="font-size:.82rem;color:#666;">S-100 Edition</p></div>
+      <div class="entry"><h5><a href="#s-158-98">S-158·98</a></h5><p style="font-size:.82rem;color:#666;">S-98 Edition</p></div>
+    </div>
+
+    <div class="mt-5" style="font-size:.78rem;color:#aaa;">
+      Last updated: April 2026
+    </div>
+
+  </main>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="td-footer d-flex justify-content-between align-items-center flex-wrap gap-2">
+  <span>© 2026 S-100 Standards Documentation</span>
+  <span>
+    <a href="index.html">English</a> &nbsp;|&nbsp;
+    <a href="index_ko.html">한국어</a>
+  </span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Highlight sidebar link on scroll
+  const anchors = document.querySelectorAll('.standard-card[id]');
+  const navLinks = document.querySelectorAll('.td-sidebar-nav a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    anchors.forEach(el => {
+      if (window.scrollY >= el.offsetTop - 80) current = el.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
