@@ -21,34 +21,35 @@
 
     /* ── Navbar ── */
     .td-navbar {
-      background: var(--primary);
+      background: #fff;
       height: var(--navbar-height);
       position: sticky;
       top: 0;
       z-index: 1030;
-      box-shadow: 0 2px 6px rgba(0,0,0,.2);
+      box-shadow: 0 1px 4px rgba(0,0,0,.12);
     }
     .navbar-brand__name {
-      color: #fff;
+      color: var(--primary);
       font-weight: 600;
       font-size: 1.1rem;
     }
     .nav-link-lang {
-      color: rgba(255,255,255,.85) !important;
+      color: var(--primary) !important;
       font-weight: 500;
-      border: 1px solid rgba(255,255,255,.4);
+      border: 1px solid var(--primary);
       border-radius: 4px;
       padding: 3px 10px !important;
       transition: background .15s;
     }
     .nav-link-lang:hover {
-      background: rgba(255,255,255,.15);
-      color: #fff !important;
+      background: #e8f0fe;
+      color: var(--primary-dark) !important;
     }
     .nav-link-lang.current {
-      background: rgba(255,255,255,.2);
-      border-color: #fff;
-      color: #fff !important;
+      background: #e8f0fe;
+      border-color: var(--primary-dark);
+      color: var(--primary-dark) !important;
+      font-weight: 700;
     }
 
     /* ── Layout ── */
@@ -195,14 +196,14 @@
   <div class="container-fluid px-3">
     <a class="navbar-brand d-flex align-items-center gap-2" href="index_ko.html">
       <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
-        <circle cx="50" cy="50" r="45" stroke="#fff" stroke-width="6"/>
-        <path d="M25 65 Q50 20 75 65" stroke="#fff" stroke-width="5" fill="none"/>
-        <circle cx="50" cy="38" r="6" fill="#fff"/>
+        <circle cx="50" cy="50" r="45" stroke="var(--primary)" stroke-width="6"/>
+        <path d="M25 65 Q50 20 75 65" stroke="var(--primary)" stroke-width="5" fill="none"/>
+        <circle cx="50" cy="38" r="6" fill="var(--primary)"/>
       </svg>
       <span class="navbar-brand__name">S-100 표준 문서</span>
     </a>
     <div class="ms-auto d-flex align-items-center gap-3">
-      <span style="color:rgba(255,255,255,.6);font-size:.85rem;">🌐</span>
+      <span style="color:#aaa;font-size:.85rem;">🌐</span>
       <a class="nav-link-lang" href="index.html">English</a>
       <a class="nav-link-lang current" href="index_ko.html"><strong>한국어</strong></a>
     </div>
@@ -259,7 +260,7 @@
     <!-- S-102 -->
     <div class="standard-card" id="s-102">
       <span class="badge-std">S-102</span>
-      <h3>수심 표면 (Bathymetric Surface)</h3>
+      <h3><a href="s102_ko.html" style="color:inherit;text-decoration:none;">수심 표면 (Bathymetric Surface)</a></h3>
       <p>
         S-102는 수심 표면 데이터의 콘텐츠 모델과 인코딩을 규정합니다.
         ENC 데이터를 보완하는 고해상도 수심 정보를 제공하며,
@@ -271,7 +272,7 @@
     <!-- S-124 -->
     <div class="standard-card" id="s-124">
       <span class="badge-std">S-124</span>
-      <h3>항행 경고 (Navigational Warnings)</h3>
+      <h3><a href="s124_ko.html" style="color:inherit;text-decoration:none;">항행 경고 (Navigational Warnings)</a></h3>
       <p>
         S-124는 항행 경고를 인코딩하고 전파하기 위한 데이터 모델을 정의합니다.
         기존 NAVTEX 및 라디오 기반 경고 시스템을 구조화된 지리참조 디지털 메시지로 대체하며,
@@ -283,7 +284,7 @@
     <!-- S-201 -->
     <div class="standard-card" id="s-201">
       <span class="badge-std">S-201</span>
-      <h3>항로표지 — AtoN (Aids to Navigation)</h3>
+      <h3><a href="s201_ko.html" style="color:inherit;text-decoration:none;">항로표지 — AtoN (Aids to Navigation)</a></h3>
       <p>
         S-201은 항로표지 정보(부표, 표지, 등대, 음향신호 등)를 위한 표준화된 데이터 모델을 제공합니다.
         항로표지 기관, 선박교통관제(VTS) 및 선내 항법 시스템 간 원활한 데이터 교환을 가능하게 합니다.
@@ -294,7 +295,7 @@
     <!-- S-158 -->
     <div class="standard-card" id="s-158">
       <span class="badge-std">S-158</span>
-      <h3>항만 및 수로 (Ports and Waterways)</h3>
+      <h3><a href="s158_ko.html" style="color:inherit;text-decoration:none;">항만 및 수로 (Ports and Waterways)</a></h3>
       <p>
         S-158는 항만 및 내수로 데이터(선석 형상, 항로 경계, 운항 제약 등)에 대한
         제품 사양을 정의합니다. 수로 해도 작성과 항만 관리 업무를 연결하는 교량 역할을 합니다.
@@ -305,7 +306,7 @@
     <!-- S-158(100) -->
     <div class="standard-card" id="s-158-100">
       <span class="badge-std">S-158(100)</span>
-      <h3>항만 및 수로 — S-100 에디션</h3>
+      <h3><a href="s158-100_ko.html" style="color:inherit;text-decoration:none;">항만 및 수로 — S-100 에디션</a></h3>
       <p>
         S-158(100)은 S-100 데이터 모델을 준수하는 항만·수로 제품 사양의 S-100 호환 버전으로,
         GML 기반 피처 카탈로그를 활용하여 최신 ECDIS 플랫폼과의 완전한 상호운용성을 제공합니다.
@@ -316,7 +317,7 @@
     <!-- S-158·98 -->
     <div class="standard-card" id="s-158-98">
       <span class="badge-std">S-158·98</span>
-      <h3>항만 및 수로 — S-98 에디션</h3>
+      <h3><a href="s158-98_ko.html" style="color:inherit;text-decoration:none;">항만 및 수로 — S-98 에디션</a></h3>
       <p>
         S-158·98은 기존 IHO 인코딩 프레임워크인 S-98 기반의 항만·수로 사양 변형본으로,
         레거시 항만 관리 시스템을 위한 마이그레이션 경로 및 호환성 레이어를 제공합니다.
