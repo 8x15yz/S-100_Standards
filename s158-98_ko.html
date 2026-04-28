@@ -54,9 +54,9 @@
       <a href="s102_ko.html">S-102 — 수심 표면</a>
       <a href="s124_ko.html">S-124 — 항행 경고</a>
       <a href="s201_ko.html">S-201 — 항로표지 (AtoN)</a>
-      <a href="s158_ko.html">S-158 — 항만 및 수로</a>
-      <a href="s158-100_ko.html">S-158(100) — 항만 (S-100 기반)</a>
-      <a href="s158-98_ko.html" class="active">S-158·98 — 항만 (S-98 기반)</a>
+      <a href="s158_ko.html">S-158 — 검증 규칙 프레임워크</a>
+      <a href="s158-100_ko.html">S-158:100 — 공통 검증 규칙</a>
+      <a href="s158-98_ko.html" class="active">S-158:98 — 상호운용성 검증</a>
     </nav>
   </aside>
 
@@ -68,41 +68,95 @@
       </ol>
     </nav>
 
-    <h1 class="mb-1">S-158·98 <span class="badge-std ms-1">항만 및 수로 — S-98 에디션</span></h1>
-    <p class="text-muted mb-3" style="font-size:.9rem;">Ports and Waterways — S-98 Edition</p>
+    <h1 class="mb-1">S-158:98 <span class="badge-std ms-1">상호운용성 검증 규칙</span></h1>
+    <p class="text-muted mb-3" style="font-size:.9rem;">Data Product Interoperability Validation Checks</p>
 
     <div class="pageinfo-primary">
-      <p class="mb-0">S-158·98은 기존 IHO 인코딩 프레임워크인 S-98 기반의 항만·수로 사양 변형본으로, 레거시 항만 관리 시스템을 위한 마이그레이션 경로 및 호환성 레이어를 제공합니다.</p>
+      <p class="mb-0">S-158:98은 S-158 프레임워크를 따르는 파생 규격으로, 여러 S-100 데이터 제품을 함께 사용할 때의 데이터 간 호환성을 점검하기 위한 상호운용성 검증 규칙을 정의합니다.</p>
     </div>
 
     <div class="section-block" id="overview">
       <h2><i class="fa-solid fa-circle-info fa-sm me-2"></i>표준 개요</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>S-158 프레임워크를 따르는 파생 규격으로, S-100 데이터 제품 간 상호운용성 검증 규칙을 정의하는 표준임. 정식 명칭은 Data Product Interoperability Validation Checks이며, Edition 1.0.0은 2025년 2월 발행됨.</p>
+      <p>개별 제품 내부의 무결성이 아닌, 여러 S-100 제품을 함께 사용할 때의 데이터 간 호환성을 점검하기 위한 규격임. S-158:100 및 S-158:1xx 검증을 보완하여 제품 간 상호운용성 검증 계층을 제공함.</p>
     </div>
 
     <div class="section-block" id="purpose">
       <h2><i class="fa-solid fa-bullseye fa-sm me-2"></i>적용목적 및 대상</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p><strong>목적</strong></p>
+      <ul>
+        <li>S-98에서 요구하는 상호운용성 조건을 검증 소프트웨어에서 구현할 수 있도록 검증 규칙을 제공함</li>
+        <li>ECDIS에서 함께 사용되는 데이터셋 및 exchange set의 교차 적합성(cross-compatibility) 검증을 지원함</li>
+        <li>S-158:100 및 S-158:1xx 검증을 보완하여 제품 간 상호운용성 검증 계층을 제공함</li>
+      </ul>
+      <p><strong>대상</strong></p>
+      <ul>
+        <li>적용 제품: S-101, S-102, S-104, S-111, S-124, S-128, S-129</li>
+        <li>개별 데이터셋 조합, exchange set, CATALOG.XML을 기반으로 하는 discovery metadata 포함</li>
+        <li>주요 활용 주체: 검증도구 개발자, 데이터 생산·편집·집성·배포 시스템, ECDIS</li>
+      </ul>
     </div>
 
     <div class="section-block" id="timeline">
       <h2><i class="fa-solid fa-clock-rotate-left fa-sm me-2"></i>버전 업데이트 타임라인</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <ul>
+        <li><strong>2025.02 / Version 1.0.0</strong> — 첫 구현 및 시험용 Edition 발행, S-100 WG 피드백 반영, 체크 번호 체계 업데이트, 오류 메시지에 오류 위치 식별 요구사항 추가</li>
+        <li><strong>2024.12.11 / Version 0.2.1</strong> — DQ Measure 컬럼 제거, overlap 관련 체크 정제, S-102 holes check 추가, 분류 체계 C/E/W indicator 방식으로 정리</li>
+        <li><strong>2024.12.01 / Version 0.2.0</strong> — maintenance section 업데이트, tolerance 업데이트, 일부 generic checks를 S-100 쪽으로 이동·정리</li>
+        <li><strong>2024.10.23 / Version 0.1.0</strong> — 초기 초안 작성 (S-98 Annex C Edition 1.0.0 및 S-100 WG7 8.1 기반)</li>
+      </ul>
     </div>
 
     <div class="section-block" id="model">
       <h2><i class="fa-solid fa-layer-group fa-sm me-2"></i>모델 구성</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>S-158의 기본 검증 구조를 따르되, 상호운용성 검증에 필요한 추가 필드를 확장하여 사용함. Data Quality Measure 컬럼은 S-158:98에서 사용하지 않음.</p>
+      <p><strong>추가 필드</strong></p>
+      <div class="table-responsive mb-3">
+        <table class="table table-sm table-bordered" style="font-size:.85rem;">
+          <thead class="table-light"><tr><th>필드명</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td><code>Products</code></td><td>검증 체크가 적용되는 데이터 제품 목록</td></tr>
+            <tr><td><code>Inputs</code></td><td>체크가 적용되는 제품 구성요소 (dataset, exchange set, exchange catalogue 등)</td></tr>
+            <tr><td><code>Linked Table</code></td><td>체크 설명에서 참조하는 추가 정보 테이블에 대한 참조</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Check ID 체계</strong>: <code>98_1xxx ~ 98_7xxx</code> 형식이며, 첫 번째 숫자가 검증 phase를 나타냄.</p>
+      <div class="table-responsive mb-3">
+        <table class="table table-sm table-bordered" style="font-size:.83rem;">
+          <thead class="table-light"><tr><th>Phase</th><th>번호 범위</th><th>분류명</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>98_1xxx</td><td>Dataset Coverage and Datums</td><td>커버리지 및 기준면 호환성 평가</td></tr>
+            <tr><td>2</td><td>98_20xx</td><td>Data Values</td><td>속성 및 데이터 값 호환성 평가</td></tr>
+            <tr><td>3</td><td>98_30xx</td><td>Coverage</td><td>데이터 중첩 관련 검사</td></tr>
+            <tr><td>4</td><td>98_40xx</td><td>Grid Structure</td><td>격자형 데이터셋 구조 검사</td></tr>
+            <tr><td>5</td><td>98_50xx</td><td>Resources</td><td>데이터 제품 리소스 검사</td></tr>
+            <tr><td>6</td><td>98_60xx</td><td>Dataset Metadata</td><td>CATALOG.XML 내 discovery metadata 호환성 평가</td></tr>
+            <tr><td>7</td><td>98_70xx</td><td>Cross Validation</td><td>S-98 기반 ECDIS 기능 구현을 위한 제품 간 호환성 평가</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>권장 검증 적용 순서</strong></p>
+      <p style="font-family:monospace;font-size:.85rem;background:#f8f9fa;padding:.75rem;border-radius:4px;border:1px solid #dee2e6;">
+        S-158:100 공통 검사 → S-158:1xx 제품별 검사 → S-158:98 상호운용성 검사(dataset) → S-158:100 exchange set 검사 → S-158:1xx exchange set 검사 → S-158:98 상호운용성 검사(CATALOG.XML) → S-158:128 카탈로그 검사
+      </p>
     </div>
 
     <div class="section-block" id="examples">
       <h2><i class="fa-solid fa-images fa-sm me-2"></i>심볼, 테스트데이터셋 예시</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>S-158:98은 별도의 심볼 체계를 정의하지 않고, S-158의 Symbols를 그대로 참조함.</p>
+      <p><strong>상호운용성 검증 항목 예시</strong></p>
+      <ul>
+        <li>S-101 / S-102 / S-104 간 수직 기준면·음향측심 기준 불일치 검사</li>
+        <li>S-102 / S-104 / S-111 격자형 coverage 데이터 중첩 검사</li>
+        <li>S-101 / S-124 / S-129 벡터 데이터셋 중첩 검사</li>
+        <li>CATALOG.XML 및 exchange set 리소스 정합성 검사</li>
+      </ul>
     </div>
 
     <div class="section-block" id="use-cases">
       <h2><i class="fa-solid fa-briefcase fa-sm me-2"></i>활용 사례</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p class="text-muted" style="font-size:.88rem;">해당 사항 없음.</p>
     </div>
 
     <div class="d-flex justify-content-between mt-4" style="font-size:.85rem;">

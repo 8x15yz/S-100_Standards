@@ -54,9 +54,9 @@
       <a href="s102_ko.html">S-102 — 수심 표면</a>
       <a href="s124_ko.html" class="active">S-124 — 항행 경고</a>
       <a href="s201_ko.html">S-201 — 항로표지 (AtoN)</a>
-      <a href="s158_ko.html">S-158 — 항만 및 수로</a>
-      <a href="s158-100_ko.html">S-158(100) — 항만 (S-100 기반)</a>
-      <a href="s158-98_ko.html">S-158·98 — 항만 (S-98 기반)</a>
+      <a href="s158_ko.html">S-158 — 검증 규칙 프레임워크</a>
+      <a href="s158-100_ko.html">S-158:100 — 공통 검증 규칙</a>
+      <a href="s158-98_ko.html">S-158:98 — 상호운용성 검증</a>
     </nav>
   </aside>
 
@@ -77,32 +77,101 @@
 
     <div class="section-block" id="overview">
       <h2><i class="fa-solid fa-circle-info fa-sm me-2"></i>표준 개요</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>IHO S-100 기반 항행 경고(Navigational Warnings) 제품 사양임. Edition 2.0.0은 S-100 5.2.0 기반이며, 관리기관은 IHO, 협력기관은 IALA임.</p>
+      <p>항행에 영향을 줄 수 있는 경고 정보를 구조화된 데이터 형태로 표현하고, 디지털 환경에서 일관되게 활용할 수 있도록 설계됨. 단순 문장 전달에 그치지 않고, 관련 위치·대상·영향 범위까지 함께 다룰 수 있도록 구성됨. S-201·S-125 등 항로표지 정보 위에 경보 심볼을 표시하여 특정 표지 또는 구역의 경보 상태를 시각적으로 나타낼 수 있음.</p>
     </div>
 
     <div class="section-block" id="purpose">
       <h2><i class="fa-solid fa-bullseye fa-sm me-2"></i>적용목적 및 대상</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <ul>
+        <li>긴급 해양 정보를 체계적으로 정의하고, ECDIS 등 항해지원시스템과 연계하여 활용 가능하도록 함</li>
+        <li>항로표지(AtoN)를 대상으로 표준화가 적용되며, 항행 안전과 직접 관련된 경고 정보를 표준 형식으로 관리함</li>
+        <li>경고 정보를 기존 해양정보와 결합하여 더 직관적으로 표현 가능한 기반을 제공함</li>
+      </ul>
     </div>
 
     <div class="section-block" id="timeline">
       <h2><i class="fa-solid fa-clock-rotate-left fa-sm me-2"></i>버전 업데이트 타임라인</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <ul>
+        <li><strong>2025 / Version 2.0.0</strong> — 첫 번째 운영판(First operational Edition) 발행</li>
+        <li><strong>2023 / Version 1.0.0</strong> — 검토 의견 반영</li>
+        <li><strong>2022 / Version 0.0.5</strong> — S-100 Edition 5.0.0에 맞춰 수정, 최신 데이터 모델 반영</li>
+        <li><strong>2019 / Version 0.04</strong> — S-100 Edition 4.0.0에 맞춰 초안 수정</li>
+        <li><strong>2018 / Version 0.0.1</strong> — 초안 최초 작성</li>
+      </ul>
     </div>
 
     <div class="section-block" id="model">
       <h2><i class="fa-solid fa-layer-group fa-sm me-2"></i>모델 구성</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>NAVWARN Preamble, NAVWARN Part, References를 조합해 항행경고를 표현하는 구조임. Feature Catalogue에 정의된 구조를 기반으로 하며, Portrayal Catalogue를 통해 각 경고의 메시지·기하정보·심볼이 시각적으로 표출됨.</p>
+      <p><strong>주요 데이터 모델 요소</strong></p>
+      <ul>
+        <li><code>&lt;FeatureType&gt;</code>: TextPlacement, NavwarnAreaAffected, NavwarnPart</li>
+        <li><code>&lt;InformationType&gt;</code>: References, NavwarnPreamble</li>
+        <li>연계 관계: <code>textAssociation</code>, <code>areaAffected</code>, <code>navwarnReferences</code>, <code>navwarnPreambleContent</code></li>
+      </ul>
+      <p>이 구조를 통해 항행경고를 공간정보와 결합된 형태로 표현할 수 있음. 사고 지점, 이동 경로, 영향 범위를 함께 나타낼 수 있어 직관적인 정보 제공이 가능함. 실무조직은 WWNWS-SC(World-Wide Navigational Warning Service Sub-Committee)임.</p>
     </div>
 
     <div class="section-block" id="examples">
       <h2><i class="fa-solid fa-images fa-sm me-2"></i>심볼, 테스트데이터셋 예시</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>항행경고는 지점·경로·범위를 중심으로 다양한 형태의 표출이 가능함.</p>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <figure class="text-center">
+            <img src="소스/01/image.png" alt="항로표지 사고 지점 표시" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">수로정보 내 항로표지 사고 발생 지점 표시</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-4">
+          <figure class="text-center">
+            <img src="소스/01/image 1.png" alt="항로표지 사고 지점 및 경로 표시" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">사고 발생 지점 및 이동 경로 표시</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-4">
+          <figure class="text-center">
+            <img src="소스/01/image 2.png" alt="항로표지 사고 지점 및 범위 표시" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">사고 발생 지점 및 영향 범위 표시</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
 
     <div class="section-block" id="use-cases">
       <h2><i class="fa-solid fa-briefcase fa-sm me-2"></i>활용 사례</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p><strong>항로표지 기반 항해지원 서비스 실선 실험 (2023~2025)</strong></p>
+      <p>블루맵이 싱가포르·울산·부산 3개 지역에서 수행한 실선 실험에서 S-124가 활용됨. 항로표지정보관리 및 정보제공 서비스 연구개발 성과를 실제 해역에서 검증하는 형태로 수행됨. 전체 테스트케이스 통과 및 S-124 데이터셋 요청·수신 테스트 결과가 확인됨.</p>
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/01/image 3.png" alt="실선실험 테스트 구성도" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">실선실험 테스트 구성도</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/01/image 4.png" alt="S-124 데이터셋 요청 및 수신 테스트 결과" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">S-124 데이터셋 요청 및 수신 테스트 결과</figcaption>
+          </figure>
+        </div>
+      </div>
+      <p><strong>S-200 테스트베드</strong></p>
+      <p>전자해도 상에서 S-124 정보를 검증하는 형태로 활용됨. 항로표지 사고 지점 설정 시 항행경보로 표시되며, 사고 경로와 범위까지 함께 표현됨.</p>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/01/image 5.png" alt="S-200 테스트베드 항로표지 사고 경로 표시" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">S-200 테스트베드 — 사고 경로 표시</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/01/image 6.png" alt="S-200 테스트베드 항로표지 사고 범위 표시" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">S-200 테스트베드 — 사고 범위 표시</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
 
     <div class="d-flex justify-content-between mt-4" style="font-size:.85rem;">

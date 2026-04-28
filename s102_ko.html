@@ -67,9 +67,9 @@
       <a href="s102_ko.html" class="active">S-102 — 수심 표면</a>
       <a href="s124_ko.html">S-124 — 항행 경고</a>
       <a href="s201_ko.html">S-201 — 항로표지 (AtoN)</a>
-      <a href="s158_ko.html">S-158 — 항만 및 수로</a>
-      <a href="s158-100_ko.html">S-158(100) — 항만 (S-100 기반)</a>
-      <a href="s158-98_ko.html">S-158·98 — 항만 (S-98 기반)</a>
+      <a href="s158_ko.html">S-158 — 검증 규칙 프레임워크</a>
+      <a href="s158-100_ko.html">S-158:100 — 공통 검증 규칙</a>
+      <a href="s158-98_ko.html">S-158:98 — 상호운용성 검증</a>
     </nav>
   </aside>
 
@@ -90,32 +90,120 @@
 
     <div class="section-block" id="overview">
       <h2><i class="fa-solid fa-circle-info fa-sm me-2"></i>표준 개요</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>S-100 기반 수심 표면(Bathymetric Surface) 제품사양 표준임. 정식 명칭은 Bathymetric Surface Product Specification이며, Edition 3.0.0은 2024년 12월 발행됨.</p>
+      <p>해저면을 정규 격자(regular grid) 형태의 디지털 수심 표면으로 표현하는 제품을 정의함. 수심 표면 제품에 필요한 콘텐츠 모델, 인코딩 구조, 표현(portrayal), 교환 파일 형식을 함께 규정함. 수심값과 품질·출처 관련 정보를 함께 다루며, S-100 기반 ECDIS 항해 지원의 핵심 요소로 활용됨. Digital Elevation Model(DEM)로도 설명됨.</p>
     </div>
 
     <div class="section-block" id="purpose">
       <h2><i class="fa-solid fa-bullseye fa-sm me-2"></i>적용목적 및 대상</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p><strong>목적</strong></p>
+      <ul>
+        <li>고해상도 수심 정보를 격자 형태로 제공하여 안전항해를 지원함</li>
+        <li>S-100 기반 항해 시스템에서 safe passage, precise berthing and mooring, route planning을 지원하는 수심 정보 제품으로 사용됨</li>
+        <li>수심값 외에 선택적 uncertainty와 quality metadata를 함께 제공하여 데이터 활용성과 신뢰성 판단을 지원함</li>
+      </ul>
+      <p><strong>대상</strong></p>
+      <ul>
+        <li>해수면 아래 지형을 수심 격자 형태로 표현하는 bathymetric surface 데이터 제품</li>
+        <li>적용 공간 범위: 바다·하천·호수 등 수역 전반</li>
+        <li>S-100 기반 ECDIS 및 항해 시스템, 수로기관 및 격자 수심 데이터 생산자, 항해 시스템 개발자와 최종 사용자 시스템</li>
+      </ul>
     </div>
 
     <div class="section-block" id="timeline">
       <h2><i class="fa-solid fa-clock-rotate-left fa-sm me-2"></i>버전 업데이트 타임라인</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <ul>
+        <li><strong>2024.07 / Version 3.0.0</strong> — cell area-based approach 반영, 하나의 제품 내 multiple vertical datums 지원 추가, QualityOfSurvey → QualityOfBathymetryCoverage 변경, S-100 Edition 5.2.0 정렬 반영, 여러 부속서 제거</li>
+        <li><strong>2023.04 / Version 2.2.0</strong> — 공간 표현 방식 regular grid(DCF 2) → feature oriented regular grid(DCF 9) 변경, QualityOfSurvey feature 추가, S-100 Part 17 및 Part 10c 정렬</li>
+        <li><strong>2022.05 / Version 2.1.0</strong> — exchange catalogue 파일명 CATALOG.XML로 수정</li>
+        <li><strong>2021.03 / Version 2.1.0</strong> — Navigation Only 범위 제한 반영, metadata 별도 ISO 형식 파일로 저장</li>
+        <li><strong>2020.11 / Version 2.1.0</strong> — 2.1 초안 작성, track changes 및 tiling 옵션 제거 방향 반영</li>
+        <li><strong>2019 / Version 2.0.0</strong> — HSSC 및 S-102 PT 의견 반영, 주요 조항 및 부속서 수정</li>
+        <li><strong>2018 / Version 2.0.0</strong> — S-100 v4.0.0 및 Part 10c 개발 방향에 맞춰 정렬</li>
+        <li><strong>2012.04 / Version 1.0.0</strong> — S-102 최초 승인판 발행</li>
+      </ul>
     </div>
 
     <div class="section-block" id="model">
       <h2><i class="fa-solid fa-layer-group fa-sm me-2"></i>모델 구성</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>수심 정보를 격자형 coverage로 표현하는 구조를 사용함. 제품은 크게 두 가지 feature type으로 구성됨.</p>
+      <ul>
+        <li><code>BathymetryCoverage</code>: 각 grid cell에 대한 depth와 선택적 uncertainty 값을 포함함</li>
+        <li><code>QualityOfBathymetryCoverage</code>: 각 grid cell이 참조할 수 있는 품질·출처 메타데이터 id를 제공함. 실제 상세 품질 정보는 <code>featureAttributeTable</code>에 기록됨</li>
+      </ul>
+      <figure class="my-3 text-center">
+        <img src="소스/02/image.png" alt="Figure 4-3 Coverage Structure of S-102" class="img-fluid rounded border" style="max-width:100%;">
+        <figcaption class="text-muted mt-1" style="font-size:.82rem;">Figure 4-3 — Coverage Structure of S-102</figcaption>
+      </figure>
+      <p>데이터셋은 정규 격자(regular grid) 기반으로 구성됨. 가장 남서쪽 격자점(grid point)을 기준으로 위치 참조(georeferencing)가 이루어지며, 격자셀(grid cell)은 grid point를 중심으로 배치됨.</p>
+      <figure class="my-3 text-center">
+        <img src="소스/02/image 1.png" alt="Figure 4-2 Data Set Structure of S-102" class="img-fluid rounded border" style="max-width:100%;">
+        <figcaption class="text-muted mt-1" style="font-size:.82rem;">Figure 4-2 — Data Set Structure of S-102</figcaption>
+      </figure>
+      <p>하나의 S-102 제품은 HDF5 계층 구조로 인코딩됨. Root Group 아래에 metadata, feature information, feature container, values dataset 등이 배치됨. 수심값(depth)과 품질 정보(quality metadata)가 분리되면서도 동일 격자 체계 안에서 함께 사용되도록 설계됨.</p>
+      <figure class="my-3 text-center">
+        <img src="소스/02/image 2.png" alt="Figure 10-1 Outline of the generic data file structure" class="img-fluid rounded border" style="max-width:100%;">
+        <figcaption class="text-muted mt-1" style="font-size:.82rem;">Figure 10-1 — Outline of the generic data file structure</figcaption>
+      </figure>
     </div>
 
     <div class="section-block" id="examples">
       <h2><i class="fa-solid fa-images fa-sm me-2"></i>심볼, 테스트데이터셋 예시</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p><strong>Portrayal</strong></p>
+      <p>Portrayal Catalogue를 통해 수심 표면의 시각화 체계를 정의함. 수심대 색상 표현과 음영 표현 방식을 사용함.</p>
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/02/image 3.png" alt="S-52 수심대 색상 표현" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">Figure 9-1 — S-52 Edition 6.1(.1) 수심대 색상 표현 (Day)</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/02/image 4.png" alt="Sun-illuminated and Static Shading" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">Figure 9-2 — 태양광 조명(Sun-illuminated) 및 정적(Static) 음영 표현</figcaption>
+          </figure>
+        </div>
+      </div>
+      <p><strong>격자 구조 및 데이터셋 예시</strong></p>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/02/image 5.png" alt="S-102 grid structure" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">Figure 4-5 — S-102 grid structure (origin: 좌하단 grid point)</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/02/image 6.png" alt="S-102 Grid point location" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">Figure 4-6 — S-102 Grid point location</figcaption>
+          </figure>
+        </div>
+      </div>
+      <figure class="my-3 text-center">
+        <img src="소스/02/image 7.png" alt="Hierarchy of S-102 Data Product" class="img-fluid rounded border" style="max-width:100%;">
+        <figcaption class="text-muted mt-1" style="font-size:.82rem;">Figure 10-2 — Hierarchy of S-102 Data Product</figcaption>
+      </figure>
     </div>
 
     <div class="section-block" id="use-cases">
       <h2><i class="fa-solid fa-briefcase fa-sm me-2"></i>활용 사례</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p><strong>OpenS100: Open Source S-100 Viewer Project</strong></p>
+      <p>S-102 데이터를 포함한 S-100 기반 데이터를 시각화하는 오픈소스 뷰어임. 표준 데이터의 실제 표출 환경을 제공함.</p>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/02/image 8.png" alt="OpenS100 시스템 구성" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">OpenS100 시스템 구성</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/02/image 9.png" alt="OpenS100 이용 화면" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">OpenS100 이용 화면</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
 
     <div class="d-flex justify-content-between mt-4" style="font-size:.85rem;">

@@ -54,9 +54,9 @@
       <a href="s102_ko.html">S-102 — 수심 표면</a>
       <a href="s124_ko.html">S-124 — 항행 경고</a>
       <a href="s201_ko.html">S-201 — 항로표지 (AtoN)</a>
-      <a href="s158_ko.html" class="active">S-158 — 항만 및 수로</a>
-      <a href="s158-100_ko.html">S-158(100) — 항만 (S-100 기반)</a>
-      <a href="s158-98_ko.html">S-158·98 — 항만 (S-98 기반)</a>
+      <a href="s158_ko.html" class="active">S-158 — 검증 규칙 프레임워크</a>
+      <a href="s158-100_ko.html">S-158:100 — 공통 검증 규칙</a>
+      <a href="s158-98_ko.html">S-158:98 — 상호운용성 검증</a>
     </nav>
   </aside>
 
@@ -68,41 +68,118 @@
       </ol>
     </nav>
 
-    <h1 class="mb-1">S-158 <span class="badge-std ms-1">항만 및 수로</span></h1>
-    <p class="text-muted mb-3" style="font-size:.9rem;">Ports and Waterways</p>
+    <h1 class="mb-1">S-158 <span class="badge-std ms-1">검증 규칙 프레임워크</span></h1>
+    <p class="text-muted mb-3" style="font-size:.9rem;">Validation Checks – Introduction and Structure</p>
 
     <div class="pageinfo-primary">
-      <p class="mb-0">S-158는 항만 및 내수로 데이터(선석 형상, 항로 경계, 운항 제약 등)에 대한 제품 사양을 정의하며, 수로 해도 작성과 항만 관리 업무를 연결합니다.</p>
+      <p class="mb-0">S-158은 S-100 기반 데이터 제품의 검증 규칙 체계를 정의하는 프레임워크 표준으로, S-158:100·S-158:1xx·S-158:98 등 파생 규격의 공통 구조와 작성 기준을 제시합니다.</p>
     </div>
 
     <div class="section-block" id="overview">
       <h2><i class="fa-solid fa-circle-info fa-sm me-2"></i>표준 개요</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>S-100 기반 데이터 제품의 검증 규칙 체계를 정의하는 프레임워크 표준임. 정식 명칭은 Validation Checks – Introduction and Structure이며, Edition 1.0.0은 2025년 2월 발행됨.</p>
+      <p>개별 데이터 제품을 직접 정의하는 문서가 아닌, 검증 규칙 문서의 구조와 작성 기준을 제시하는 상위 규격임. 데이터 자체보다 검증 규칙의 구조·문법·분류·적용 순서를 표준화하는 데 초점을 둠.</p>
+      <p><strong>S-158 시리즈 구성</strong></p>
+      <ul>
+        <li><strong>S-158</strong>: 검증 규칙 프레임워크 (본 문서)</li>
+        <li><strong>S-158:100</strong>: 공통(Generic) 검증 규칙</li>
+        <li><strong>S-158:1xx</strong>: 제품별 검증 규칙</li>
+        <li><strong>S-158:98</strong>: 제품 간 상호운용성 검증 규칙</li>
+      </ul>
+      <p>모든 S-158:1xx 문서는 S-158의 구조와 원칙을 따라야 함.</p>
     </div>
 
     <div class="section-block" id="purpose">
       <h2><i class="fa-solid fa-bullseye fa-sm me-2"></i>적용목적 및 대상</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p><strong>목적</strong></p>
+      <ul>
+        <li>S-100 기반 데이터셋과 교환셋의 정확성·완전성·무결성을 검증하기 위한 기준을 제공함</li>
+        <li>제품 내부 오류, 제품 간 충돌, 패키지 구조 오류를 체계적으로 점검할 수 있도록 함</li>
+        <li>최종 사용자 시스템에서 사용 가능한 수준의 데이터 품질 확보를 지원함</li>
+      </ul>
+      <p><strong>대상</strong></p>
+      <ul>
+        <li>S-100 기반 데이터셋(dataset) 검증</li>
+        <li>교환셋(exchange set) 및 관련 metadata·signature 검증</li>
+        <li>S-128 기반 product catalogue dataset의 정합성 확인</li>
+        <li>주요 활용 주체: 데이터 생산자·집성자·배포자·응용시스템 및 검증 소프트웨어 개발자</li>
+      </ul>
     </div>
 
     <div class="section-block" id="timeline">
       <h2><i class="fa-solid fa-clock-rotate-left fa-sm me-2"></i>버전 업데이트 타임라인</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <ul>
+        <li><strong>2025.02 / Version 1.0.0</strong> — 첫 구현 및 시험(implementation and testing)용 Edition 발행</li>
+        <li><strong>2024.11 / Version 0.2.0</strong> — 검토 의견 반영, S-100 WG9 결정사항 반영, check classification 관련 문구 수정, S-158:1xx 유지관리 체계 개정</li>
+        <li><strong>2024.08 / Version 0.1.0</strong> — 초안 작성</li>
+      </ul>
     </div>
 
     <div class="section-block" id="model">
       <h2><i class="fa-solid fa-layer-group fa-sm me-2"></i>모델 구성</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>각 검증 항목은 표 형식의 columnar structure로 정의됨. 필수 구성 요소는 다음과 같음.</p>
+      <ul>
+        <li><strong>Check ID</strong>: 고유 식별 번호 (1XX_nnnn 형식)</li>
+        <li><strong>Classification</strong>: Critical / Error / Warning 구분</li>
+        <li><strong>Check Message</strong>: 오류 발생 시 사용자에게 전달되는 안내 문구</li>
+        <li><strong>Check Description</strong>: 검사 조건 및 위반 상황 기술</li>
+        <li><strong>Check Solution</strong>: 위반 상황에 대한 해결안</li>
+        <li><strong>Reference</strong>: 참조하는 규격 및 문서 조항</li>
+      </ul>
+      <p>이력성 항목(Introduced, Modified, Deleted)은 선택적으로 추가할 수 있음.</p>
+      <p><strong>검증 활동 구분</strong></p>
+      <figure class="my-3 text-center">
+        <img src="소스/02/image 10.png" alt="Figure 5-1 Outline of Validation" class="img-fluid rounded border" style="max-width:100%;">
+        <figcaption class="text-muted mt-1" style="font-size:.82rem;">Figure 5-1 — Outline of Validation</figcaption>
+      </figure>
+      <ul>
+        <li>단일 데이터셋 내부 검사 (a~e)</li>
+        <li>동일 제품 내 데이터셋 간 검사 (f)</li>
+        <li>제품 간 상호운용성 검사 (g)</li>
+        <li>패키지·교환셋·카탈로그 검사 (h~i)</li>
+      </ul>
+      <p><strong>권장 검증 적용 순서</strong></p>
+      <p style="font-family:monospace;font-size:.85rem;background:#f8f9fa;padding:.75rem;border-radius:4px;border:1px solid #dee2e6;">
+        S-158:100 공통 검사 → S-158:1xx 제품별 검사 → S-158:98 단일 데이터셋 상호운용성 검사 → 동일 제품 내 검사 → 제품 간 검사 → 교환셋 검사 → 카탈로그 검사
+      </p>
+      <p><strong>벡터 제품 검증을 위한 공간 관계 연산자</strong></p>
+      <p>EQUALS, DISJOINT, TOUCHES, WITHIN, OVERLAPS, CROSSES, INTERSECTS, CONTAINS, COVERED_BY, COINCIDENT</p>
     </div>
 
     <div class="section-block" id="examples">
       <h2><i class="fa-solid fa-images fa-sm me-2"></i>심볼, 테스트데이터셋 예시</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>검증 문법에서 사용되는 기호 체계 및 공간 관계 연산자 다이어그램임.</p>
+      <div class="table-responsive mb-3">
+        <table class="table table-sm table-bordered" style="font-size:.85rem;">
+          <thead class="table-light"><tr><th>기호</th><th>의미</th></tr></thead>
+          <tbody>
+            <tr><td><code>I</code></td><td>기하 객체의 내부(interior)</td></tr>
+            <tr><td><code>E</code></td><td>기하 객체의 외부(exterior)</td></tr>
+            <tr><td><code>B</code></td><td>기하 객체의 경계(boundary)</td></tr>
+            <tr><td><code>∩</code></td><td>집합 교집합</td></tr>
+            <tr><td><code>∪</code></td><td>집합 합집합</td></tr>
+            <tr><td><code>∧</code></td><td>논리 AND</td></tr>
+            <tr><td><code>∨</code></td><td>논리 OR</td></tr>
+            <tr><td><code>∅</code></td><td>공집합(null set)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>공간 관계 연산자 다이어그램 예시 (EQUALS, DISJOINT, TOUCHES, WITHIN, OVERLAPS, CROSSES, COVERED_BY, COINCIDENT)</p>
+      <div class="row g-2">
+        <div class="col-md-3 col-6"><figure class="text-center"><img src="소스/02/image 11.png" alt="EQUALS" class="img-fluid rounded border"><figcaption style="font-size:.78rem;" class="text-muted mt-1">EQUALS</figcaption></figure></div>
+        <div class="col-md-3 col-6"><figure class="text-center"><img src="소스/02/image 12.png" alt="DISJOINT" class="img-fluid rounded border"><figcaption style="font-size:.78rem;" class="text-muted mt-1">DISJOINT</figcaption></figure></div>
+        <div class="col-md-3 col-6"><figure class="text-center"><img src="소스/02/image 13.png" alt="TOUCHES" class="img-fluid rounded border"><figcaption style="font-size:.78rem;" class="text-muted mt-1">TOUCHES</figcaption></figure></div>
+        <div class="col-md-3 col-6"><figure class="text-center"><img src="소스/02/image 14.png" alt="WITHIN" class="img-fluid rounded border"><figcaption style="font-size:.78rem;" class="text-muted mt-1">WITHIN</figcaption></figure></div>
+        <div class="col-md-3 col-6"><figure class="text-center"><img src="소스/02/image 15.png" alt="OVERLAPS" class="img-fluid rounded border"><figcaption style="font-size:.78rem;" class="text-muted mt-1">OVERLAPS</figcaption></figure></div>
+        <div class="col-md-3 col-6"><figure class="text-center"><img src="소스/02/image 16.png" alt="CROSSES" class="img-fluid rounded border"><figcaption style="font-size:.78rem;" class="text-muted mt-1">CROSSES</figcaption></figure></div>
+        <div class="col-md-3 col-6"><figure class="text-center"><img src="소스/02/image 17.png" alt="COVERED_BY" class="img-fluid rounded border"><figcaption style="font-size:.78rem;" class="text-muted mt-1">COVERED_BY</figcaption></figure></div>
+        <div class="col-md-3 col-6"><figure class="text-center"><img src="소스/02/image 18.png" alt="COINCIDENT" class="img-fluid rounded border"><figcaption style="font-size:.78rem;" class="text-muted mt-1">COINCIDENT</figcaption></figure></div>
+      </div>
     </div>
 
     <div class="section-block" id="use-cases">
       <h2><i class="fa-solid fa-briefcase fa-sm me-2"></i>활용 사례</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p class="text-muted" style="font-size:.88rem;">해당 사항 없음.</p>
     </div>
 
     <div class="d-flex justify-content-between mt-4" style="font-size:.85rem;">

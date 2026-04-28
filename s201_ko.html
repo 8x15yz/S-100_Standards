@@ -54,9 +54,9 @@
       <a href="s102_ko.html">S-102 — 수심 표면</a>
       <a href="s124_ko.html">S-124 — 항행 경고</a>
       <a href="s201_ko.html" class="active">S-201 — 항로표지 (AtoN)</a>
-      <a href="s158_ko.html">S-158 — 항만 및 수로</a>
-      <a href="s158-100_ko.html">S-158(100) — 항만 (S-100 기반)</a>
-      <a href="s158-98_ko.html">S-158·98 — 항만 (S-98 기반)</a>
+      <a href="s158_ko.html">S-158 — 검증 규칙 프레임워크</a>
+      <a href="s158-100_ko.html">S-158:100 — 공통 검증 규칙</a>
+      <a href="s158-98_ko.html">S-158:98 — 상호운용성 검증</a>
     </nav>
   </aside>
 
@@ -77,32 +77,100 @@
 
     <div class="section-block" id="overview">
       <h2><i class="fa-solid fa-circle-info fa-sm me-2"></i>표준 개요</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>IHO S-100 기반 항로표지(AtoN: Aid to Navigation) 정보 교환 표준임. Edition 1.2.0은 S-100 5.2.0 기반이며, 관리기관은 IHO, 협력기관은 IALA임.</p>
+      <p>항로표지의 속성·상태·설치 정보·모니터링 정보를 디지털 방식으로 관리하고 교환하기 위해 정의됨. 구조물·장비·운영 상태·설치 특성 등 복합적인 정보를 통합 관리하도록 구성됨. 전자해도 및 항해지원시스템과 연계되어 활용될 수 있도록 설계됨.</p>
     </div>
 
     <div class="section-block" id="purpose">
       <h2><i class="fa-solid fa-bullseye fa-sm me-2"></i>적용목적 및 대상</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <ul>
+        <li>항로표지 정보의 실시간 상태 공유 및 모니터링을 지원함</li>
+        <li>ECDIS 등 항해지원시스템과의 연계를 가능하게 함</li>
+        <li>등대·등표·부표 등 다양한 항로표지를 대상으로 표준화가 적용됨</li>
+        <li>분산·형식 불일치 항로표지 정보를 하나의 표준 체계 안에서 통합 관리 가능하게 함</li>
+      </ul>
     </div>
 
     <div class="section-block" id="timeline">
       <h2><i class="fa-solid fa-clock-rotate-left fa-sm me-2"></i>버전 업데이트 타임라인</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <ul>
+        <li><strong>2025 / Version 1.2.0</strong> — AIS 장비 분류 세분화, <code>ElectronicAtoN</code> 단일 피처 중심의 상속 구조 개편</li>
+        <li><strong>2024 / Version 1.1.0</strong> — Feature 명칭 및 개념 정비를 통한 표준 고도화, 주요 객체명 및 정의 체계 재정립</li>
+        <li><strong>2022 / Version 1.0.0</strong> — AtoN 개념 정의 및 유형 분류 기준 제시, 항로표지 정의와 식별 체계 최초 수립</li>
+      </ul>
     </div>
 
     <div class="section-block" id="model">
       <h2><i class="fa-solid fa-layer-group fa-sm me-2"></i>모델 구성</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>구조물(StructureObject)과 장비(Equipment)의 조합으로 항로표지를 표현하는 구조를 가짐. Feature Catalogue에 정의된 속성과 구조를 기반으로 구성되며, Portrayal Catalogue에 따라 전자해도에 심볼과 색상으로 표출됨.</p>
+      <p><strong>주요 데이터 모델 요소</strong></p>
+      <ul>
+        <li>구조물: <code>AidsToNavigation</code>, <code>StructureObject</code>, <code>GenericBeacon</code>, <code>GenericBuoy</code>, <code>Landmark</code></li>
+        <li>장비: <code>Equipment</code>, <code>LightAllAround</code>, <code>Topmark</code>, <code>RadioStation</code></li>
+        <li>전자식 항로표지: <code>ElectronicAtoN</code>, <code>VirtualAISAton</code>, <code>PhysicalAISAton</code>, <code>SyntheticAISAton</code></li>
+      </ul>
+      <p>이 요소들 간의 계층적 연관관계를 통해 부표·등대·레이콘(Racon)·등화·음향신호·AIS 등 다양한 항로표지 구성 요소를 통합적으로 표현할 수 있음.</p>
     </div>
 
     <div class="section-block" id="examples">
       <h2><i class="fa-solid fa-images fa-sm me-2"></i>심볼, 테스트데이터셋 예시</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p>구조물과 장비의 조합을 기반으로 다양한 형태의 항로표지가 구성됨. 전자해도 상에서는 이에 대응하는 심볼과 색상으로 시각화됨.</p>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <figure class="text-center">
+            <img src="소스/03/image.png" alt="Beacon에 붉은색 전방위 Light 구성" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">Beacon 구조물에 붉은색 전방위 Light가 설치된 항로표지 구성</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-4">
+          <figure class="text-center">
+            <img src="소스/03/image 1.png" alt="타워 Landmark에 녹색 등화 구성" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">타워 모양의 Landmark에 녹색 등화가 설치된 항로표지 구성</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-4">
+          <figure class="text-center">
+            <img src="소스/03/image 2.png" alt="DGNSS 항법 지원시설 구성" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">위성항법 보정신호(DGNSS)를 송신하는 항법 지원시설 구성</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
 
     <div class="section-block" id="use-cases">
       <h2><i class="fa-solid fa-briefcase fa-sm me-2"></i>활용 사례</h2>
-      <p class="placeholder-notice">이 섹션의 내용은 곧 채워질 예정입니다.</p>
+      <p><strong>항로표지 정보관리시스템 고도화 (2021~2025)</strong></p>
+      <p>S-201 국제표준을 적용하여 기존 항로표지 정보를 통합하고 표준화함. 형식 불일치·분산 관리 문제 해결, 전자해도 등 해양 관련 시스템과의 연계가 구현됨.</p>
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/03/image 3.png" alt="정보관리시스템 연계 해도 상의 심볼 표출" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">정보관리시스템 연계 해도 상의 심볼 표출</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/03/image 4.png" alt="기존 항로표지 정보를 S-201 규격으로 통합한 결과" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">기존 항로표지 정보를 S-201 규격으로 통합한 결과</figcaption>
+          </figure>
+        </div>
+      </div>
+      <p><strong>S-200 테스트베드 (2024)</strong></p>
+      <p>S-201 정보가 전자해도 상에서 검증되는 형태로 활용됨. 구조물과 장비 간 연관관계 설정 시 좌표 일치 여부를 검사하는 by Product Validation 기능이 함께 구현됨.</p>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/03/image 5.png" alt="S-200 테스트베드 해도 상의 심볼 표출" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">S-200 테스트베드 해도 상의 심볼 표출</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure class="text-center">
+            <img src="소스/03/image 6.png" alt="By Product 기능을 사용하여 S-201 데이터를 검증" class="img-fluid rounded border">
+            <figcaption class="text-muted mt-1" style="font-size:.82rem;">By Product 기능을 사용하여 S-201 데이터를 검증</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
 
     <div class="d-flex justify-content-between mt-4" style="font-size:.85rem;">
